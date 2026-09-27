@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WOC Style Test V2</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- 开始页面 -->
+    <section id="startPage" class="page active">
+
+        <div class="hero">
+
+            <div class="eyebrow">
+                WRITING & OC STYLE TEST · V2
+            </div>
+
+            <h1>
+                你的笔风<br>
+                <span>与 OC 设计风格</span>
+            </h1>
+
+            <p class="intro">
+                25道题 · 5个维度 · 4选1<br>
+                生成你的五字母创作代码与完整风格档案
+            </p>
+
+            <div class="dimension-preview">
+
+                <div>
+                    <b>W / D</b>
+                    <span>氛围</span>
+                </div>
+
+                <div>
+                    <b>C / M</b>
+                    <span>叙事</span>
+                </div>
+
+                <div>
+                    <b>E / I</b>
+                    <span>情感</span>
+                </div>
+
+                <div>
+                    <b>P / A</b>
+                    <span>OC</span>
+                </div>
+
+                <div>
+                    <b>R / S</b>
+                    <span>世界</span>
+                </div>
+
+            </div>
+
+            <button class="primary-btn" onclick="startTest()">
+                开始测试
+            </button>
+
+            <p class="notice">
+                没有标准答案。请选择最接近你真实创作习惯的选项。
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- 答题页面 -->
+    <section id="quizPage" class="page">
+
+        <div class="quiz-top">
+
+            <span id="questionNumber">
+                01 / 25
+            </span>
+
+            <div class="progress-container">
+                <div id="progressBar"></div>
+            </div>
+
+        </div>
+
+
+        <div class="dimension-name" id="dimensionName"></div>
+
+
+        <div class="question-card">
+
+            <h2 id="questionText"></h2>
+
+            <div id="options"></div>
+
+        </div>
+
+
+        <div class="quiz-bottom">
+
+            <button
+                id="prevBtn"
+                class="secondary-btn"
+                onclick="previousQuestion()"
+            >
+                上一题
+            </button>
+
+            <span id="selectionHint">
+                请选择一个答案
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- 结果页面 -->
+    <section id="resultPage" class="page">
+
+        <div class="result-header">
+
+            <div class="eyebrow">
+                YOUR CREATIVE PROFILE
+            </div>
+
+            <div id="resultCode" class="result-code">
+                DMIPS
+            </div>
+
+            <h1 id="resultTitle"></h1>
+
+            <p id="resultSubtitle"></p>
+
+        </div>
+
+
+        <div class="signature-card">
+
+            <span class="quote-mark">
+                “
+            </span>
+
+            <p id="signatureText"></p>
+
+        </div>
+
+
+        <!-- 五维 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                01 · FIVE DIMENSIONS
+            </div>
+
+            <h2>
+                你的五维结构
+            </h2>
+
+            <div id="dimensionResults"></div>
+
+        </section>
+
+
+        <!-- 笔风 -->
+        <section class="result-section highlight">
+
+            <div class="section-label">
+                02 · CORE WRITING STYLE
+            </div>
+
+            <h2 id="writingTitle"></h2>
+
+            <p id="writingDescription"></p>
+
+            <div
+                id="writingKeywords"
+                class="tags"
+            ></div>
+
+        </section>
+
+
+        <!-- OC -->
+        <section class="result-section">
+
+            <div class="section-label">
+                03 · OC DESIGN
+            </div>
+
+            <h2 id="ocTitle"></h2>
+
+            <p id="ocDescription"></p>
+
+            <div
+                id="ocFeatures"
+                class="oc-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- 写作公式 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                04 · YOUR WRITING FORMULA
+            </div>
+
+            <h2>
+                最自然的创作路径
+            </h2>
+
+            <div
+                id="formula"
+                class="formula"
+            ></div>
+
+            <p id="formulaDescription"></p>
+
+        </section>
+
+
+        <!-- 优势 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                05 · NATURAL STRENGTHS
+            </div>
+
+            <h2>
+                你天然容易写出的东西
+            </h2>
+
+            <div id="strengths"></div>
+
+        </section>
+
+
+        <!-- OC DNA -->
+        <section class="result-section">
+
+            <div class="section-label">
+                06 · CHARACTER DNA
+            </div>
+
+            <h2>
+                你的 OC DNA
+            </h2>
+
+            <div
+                id="characterDNA"
+                class="dna-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- 场景 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                07 · TYPICAL SCENE
+            </div>
+
+            <h2>
+                你的典型场景
+            </h2>
+
+            <div
+                id="typicalScene"
+                class="scene-card"
+            ></div>
+
+        </section>
+
+
+        <!-- 问题 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                08 · WATCH OUT
+            </div>
+
+            <h2>
+                容易出现的问题
+            </h2>
+
+            <div id="warnings"></div>
+
+        </section>
+
+
+        <!-- 发展 -->
+        <section class="result-section">
+
+            <div class="section-label">
+                09 · DEVELOPMENT
+            </div>
+
+            <h2>
+                适合你的进阶方向
+            </h2>
+
+            <div id="development"></div>
+
+        </section>
+
+
+        <div class="final-signature">
+
+            <div class="eyebrow">
+                YOUR WRITING SIGNATURE
+            </div>
+
+            <blockquote id="finalQuote"></blockquote>
+
+            <strong id="finalCode"></strong>
+
+        </div>
+
+
+        <button
+            class="primary-btn restart-btn"
+            onclick="restartTest()"
+        >
+            重新测试
+        </button>
+
+    </section>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
