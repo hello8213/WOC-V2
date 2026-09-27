@@ -1,0 +1,797 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            #ece9ff,
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 90% 100%,
+            #e5efff,
+            transparent 35%
+        ),
+        #f7f7fa;
+
+    color: #20202a;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "PingFang SC",
+        "Microsoft YaHei",
+        sans-serif;
+}
+
+button {
+    font-family: inherit;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+}
+
+.page.active {
+    display: block;
+}
+
+
+/* =========================
+   START
+========================= */
+
+.hero {
+    width: min(900px, 92%);
+    min-height: 100vh;
+
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: #777783;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 9vw, 90px);
+
+    line-height: 1.02;
+
+    letter-spacing: -4px;
+
+    margin: 0;
+}
+
+.hero h1 span {
+    color: #6355dc;
+}
+
+.intro {
+    line-height: 1.9;
+
+    color: #6f6f7b;
+
+    margin-top: 28px;
+}
+
+.dimension-preview {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin: 42px 0;
+}
+
+.dimension-preview div {
+    width: 100px;
+
+    padding: 14px 8px;
+
+    border: 1px solid #e4e4eb;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+    box-shadow: 0 6px 22px #00000008;
+}
+
+.dimension-preview b {
+    display: block;
+
+    color: #6355dc;
+
+    margin-bottom: 5px;
+}
+
+.dimension-preview span {
+    font-size: 12px;
+
+    color: #888894;
+}
+
+.primary-btn {
+    border: 0;
+
+    background: #6355dc;
+
+    color: #fff;
+
+    padding: 15px 38px;
+
+    border-radius: 13px;
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+    cursor: pointer;
+
+    box-shadow: 0 12px 30px #6355dc40;
+
+    transition: .2s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.notice {
+    font-size: 12px;
+
+    color: #9999a5;
+
+    margin-top: 18px;
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+#quizPage,
+#resultPage {
+    width: min(900px, 92%);
+
+    margin: auto;
+
+    padding: 50px 0;
+}
+
+.quiz-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    color: #777783;
+
+    font-size: 13px;
+}
+
+.progress-container {
+    height: 6px;
+
+    background: #e4e4eb;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    flex: 1;
+}
+
+.progress-container div {
+    height: 100%;
+
+    background: #6355dc;
+
+    transition: .3s;
+}
+
+.dimension-name {
+    margin-top: 55px;
+
+    color: #6355dc;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+}
+
+.question-card h2 {
+    font-size: clamp(25px, 4vw, 40px);
+
+    line-height: 1.5;
+
+    margin: 18px 0 32px;
+}
+
+.option {
+    display: flex;
+
+    gap: 14px;
+
+    align-items: flex-start;
+
+    padding: 20px;
+
+    margin: 11px 0;
+
+    border: 1px solid #e1e1e9;
+
+    border-radius: 16px;
+
+    background: #fff;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    transition: .2s;
+}
+
+.option:hover {
+    transform: translateX(4px);
+
+    border-color: #9c94ed;
+}
+
+.option.selected {
+    border-color: #6355dc;
+
+    background: #f0efff;
+}
+
+.option-letter {
+    width: 32px;
+
+    height: 32px;
+
+    flex: none;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eeeef4;
+
+    color: #666675;
+
+    font-weight: 800;
+}
+
+.selected .option-letter {
+    background: #6355dc;
+
+    color: #fff;
+}
+
+.option-text {
+    line-height: 1.7;
+
+    color: #464650;
+}
+
+.quiz-bottom {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 26px;
+}
+
+.secondary-btn {
+    border: 1px solid #dddde6;
+
+    background: #fff;
+
+    color: #555562;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+#selectionHint {
+    font-size: 12px;
+
+    color: #9999a5;
+}
+
+
+/* =========================
+   RESULT HEADER
+========================= */
+
+.result-header {
+    text-align: center;
+
+    padding-bottom: 45px;
+}
+
+.result-code {
+    font-size: clamp(65px, 15vw, 135px);
+
+    font-weight: 900;
+
+    letter-spacing: 12px;
+
+    color: #6355dc;
+
+    line-height: 1.1;
+}
+
+.result-header h1 {
+    font-size: 30px;
+
+    margin: 10px 0;
+}
+
+.result-header p {
+    color: #777783;
+
+    line-height: 1.8;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.signature-card {
+    padding: 32px 35px;
+
+    background: #fff;
+
+    border: 1px solid #e5e5eb;
+
+    border-radius: 24px;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+}
+
+.quote-mark {
+    font-size: 60px;
+
+    line-height: .5;
+
+    color: #aaa0ef;
+}
+
+.signature-card p {
+    font-size: 21px;
+
+    font-weight: 700;
+
+    line-height: 1.8;
+
+    max-width: 720px;
+
+    margin: 20px auto 0;
+}
+
+.result-section {
+    background: #fff;
+
+    border: 1px solid #e5e5eb;
+
+    border-radius: 24px;
+
+    padding: 32px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 8px 30px #00000005;
+}
+
+.section-label {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #6355dc;
+
+    font-weight: 850;
+
+    margin-bottom: 12px;
+}
+
+.result-section h2 {
+    margin: 0 0 18px;
+
+    font-size: 25px;
+}
+
+.result-section p {
+    line-height: 1.9;
+
+    color: #666672;
+}
+
+.highlight {
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #f4f2ff
+        );
+}
+
+
+/* =========================
+   TAGS
+========================= */
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+.tag {
+    padding: 8px 13px;
+
+    background: #efedff;
+
+    color: #5b50c6;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   DIMENSIONS
+========================= */
+
+.dimension-result {
+    margin: 24px 0;
+}
+
+.dimension-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+}
+
+.dimension-code {
+    color: #6355dc;
+
+    font-weight: 850;
+}
+
+.bar {
+    height: 9px;
+
+    background: #e8e8ee;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+
+    background: #6355dc;
+
+    border-radius: 10px;
+}
+
+.dimension-desc {
+    font-size: 12px;
+
+    color: #858591;
+
+    line-height: 1.7;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   OC
+========================= */
+
+.oc-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.oc-item {
+    background: #f7f7fa;
+
+    border-radius: 15px;
+
+    padding: 18px;
+}
+
+.oc-item b {
+    display: block;
+
+    margin-bottom: 8px;
+}
+
+.oc-item span {
+    font-size: 13px;
+
+    color: #777783;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FORMULA
+========================= */
+
+.formula {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin: 28px 0;
+}
+
+.formula span {
+    padding: 12px 15px;
+
+    background: #f0efff;
+
+    color: #564ac0;
+
+    border-radius: 10px;
+
+    font-weight: 750;
+}
+
+.formula i {
+    font-style: normal;
+
+    color: #aaa;
+}
+
+
+/* =========================
+   DNA
+========================= */
+
+.dna-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.dna-item {
+    background: #f7f7fa;
+
+    border-radius: 14px;
+
+    padding: 16px;
+}
+
+.dna-item b {
+    display: block;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.dna-item span {
+    font-size: 12px;
+
+    color: #777783;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SCENE
+========================= */
+
+.scene-card {
+    background: #f7f6ff;
+
+    border-left: 4px solid #6355dc;
+
+    border-radius: 12px;
+
+    padding: 23px;
+
+    line-height: 2;
+
+    color: #4d4d59;
+}
+
+
+/* =========================
+   WARNING
+========================= */
+
+.warning {
+    padding: 15px 0;
+
+    border-bottom: 1px solid #ededf1;
+
+    color: #686873;
+
+    line-height: 1.7;
+}
+
+.warning:last-child {
+    border-bottom: 0;
+}
+
+
+/* =========================
+   DEVELOPMENT
+========================= */
+
+.dev-item {
+    padding: 18px;
+
+    background: #f7f7fa;
+
+    border-radius: 14px;
+
+    margin: 10px 0;
+}
+
+.dev-item b {
+    display: block;
+
+    margin-bottom: 7px;
+}
+
+.dev-item span {
+    color: #777783;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-signature {
+    text-align: center;
+
+    padding: 70px 20px;
+}
+
+.final-signature blockquote {
+    font-size: clamp(20px, 4vw, 31px);
+
+    line-height: 1.7;
+
+    font-weight: 750;
+
+    max-width: 700px;
+
+    margin: 25px auto;
+}
+
+.final-signature strong {
+    letter-spacing: 6px;
+
+    color: #6355dc;
+}
+
+.restart-btn {
+    display: block;
+
+    margin: 0 auto 60px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .dimension-preview div {
+        width: 87px;
+    }
+
+    .option {
+        padding: 16px;
+    }
+
+    .result-section {
+        padding: 23px;
+    }
+
+    .signature-card {
+        padding: 25px 18px;
+    }
+
+    .signature-card p {
+        font-size: 18px;
+    }
+
+    .oc-grid,
+    .dna-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .formula {
+        gap: 6px;
+    }
+
+    .formula span {
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+}
